@@ -1,0 +1,145 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\sathyanarayana.naik\\OneDrive - Neudesic\\Documents\\devops\\super-service\\test\\SuperService.UnitTests.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\sathyanarayana.naik\\OneDrive - Neudesic\\Documents\\devops\\super-service\\src\\SuperService.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\sathyanarayana.naik\\OneDrive - Neudesic\\Documents\\devops\\super-service\\src\\SuperService.csproj",
+        "projectName": "SuperService",
+        "projectPath": "C:\\Users\\sathyanarayana.naik\\OneDrive - Neudesic\\Documents\\devops\\super-service\\src\\SuperService.csproj",
+        "packagesPath": "C:\\Users\\sathyanarayana.naik\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\sathyanarayana.naik\\OneDrive - Neudesic\\Documents\\devops\\super-service\\src\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\sathyanarayana.naik\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.407/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\sathyanarayana.naik\\OneDrive - Neudesic\\Documents\\devops\\super-service\\test\\SuperService.UnitTests.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\sathyanarayana.naik\\OneDrive - Neudesic\\Documents\\devops\\super-service\\test\\SuperService.UnitTests.csproj",
+        "projectName": "SuperService.UnitTests",
+        "projectPath": "C:\\Users\\sathyanarayana.naik\\OneDrive - Neudesic\\Documents\\devops\\super-service\\test\\SuperService.UnitTests.csproj",
+        "packagesPath": "C:\\Users\\sathyanarayana.naik\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\sathyanarayana.naik\\OneDrive - Neudesic\\Documents\\devops\\super-service\\test\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\sathyanarayana.naik\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\sathyanarayana.naik\\OneDrive - Neudesic\\Documents\\devops\\super-service\\src\\SuperService.csproj": {
+                "projectPath": "C:\\Users\\sathyanarayana.naik\\OneDrive - Neudesic\\Documents\\devops\\super-service\\src\\SuperService.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[17.7.2, )"
+            },
+            "NUnit3TestAdapter": {
+              "target": "Package",
+              "version": "[4.0.0, )"
+            },
+            "nunit": {
+              "target": "Package",
+              "version": "[3.13.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.407/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
