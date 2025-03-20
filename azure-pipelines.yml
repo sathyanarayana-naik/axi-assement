@@ -26,6 +26,11 @@ stages:
         inlineScript: |
           az acr login --name $(acrName)
 
+    - script: |
+        echo "Listing files in build context:"
+        ls -lR $(Build.SourcesDirectory)
+        displayName: 'Debug: List Files in Build Context'
+
     - task: Bash@3
       displayName: 'Build Docker Image'
       inputs:
