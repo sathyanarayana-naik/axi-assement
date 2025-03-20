@@ -31,7 +31,7 @@ stages:
       inputs:
         targetType: 'inline'
         script: |
-          docker build -t $(acrName).azurecr.io/$(imageName):$(Build.BuildId) -f  $(Build.SourcesDirectory)/dockerfile .
+          docker build -t $(acrName).azurecr.io/$(imageName):$(Build.BuildId) -f  $(Build.SourcesDirectory)super-service/dockerfile .
 
     - task: Bash@3
       displayName: 'Push Docker Image to ACR'
@@ -54,6 +54,6 @@ stages:
         scriptType: 'bash'
         scriptLocation: 'inlineScript'
         inlineScript: |
-          az functionapp config container set --name $(functionAppName) --resource-group <YOUR_RESOURCE_GROUP> \
+          az functionapp config container set --name $(functionAppName) --resource-group testrg \
           --docker-custom-image-name $(acrName).azurecr.io/$(imageName):$(Build.BuildId) \
           --docker-registry-server-url https://$(acrName).azurecr.io
