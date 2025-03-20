@@ -31,7 +31,7 @@ stages:
       inputs:
         targetType: 'inline'
         script: |
-          docker build -t $(acrName).azurecr.io/$(imageName):$(Build.BuildId) -f dockerfile .
+          docker build -t $(acrName).azurecr.io/$(imageName):$(Build.BuildId) -f  $(Build.SourcesDirectory)/dockerfile .
 
     - task: Bash@3
       displayName: 'Push Docker Image to ACR'
