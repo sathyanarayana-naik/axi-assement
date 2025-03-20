@@ -8,7 +8,7 @@ variables:
   acrName: 'pracr'                # Replace with your Azure Container Registry name
   imageName: 'superservice'                  # Name of the image to be pushed to ACR
   functionAppName: 'finopsautotag' # Replace with your Azure Function App name
-  azureSubscription: '6d62fc5c-82a9-4ec9-b959-298ea24236a4' # Azure DevOps Service Connection Name
+  azureSubscription: 'azuresrconn'
 
 stages:
 - stage: Build
