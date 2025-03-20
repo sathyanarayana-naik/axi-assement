@@ -1,0 +1,59 @@
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  acrName: 'pracr'                # Replace with your Azure Container Registry name
+  imageName: 'superservice'                  # Name of the image to be pushed to ACR
+  functionAppName: 'finopsautotag' # Replace with your Azure Function App name
+  azureSubscription: '6d62fc5c-82a9-4ec9-b959-298ea24236a4' # Azure DevOps Service Connection Name
+
+stages:
+- stage: Build
+  displayName: 'Build and Push Docker Image to ACR'
+  jobs:
+  - job: BuildAndPush
+    displayName: 'Build and Push to ACR'
+    steps:
+    - task: AzureCLI@2
+      displayName: 'Login to ACR'
+      inputs:
+        azureSubscription: $(azureSubscription)
+        scriptType: 'bash'
+        scriptLocation: 'inlineScript'
+        inlineScript: |
+          az acr login --name $(acrName)
+
+    - task: Bash@3
+      displayName: 'Build Docker Image'
+      inputs:
+        targetType: 'inline'
+        script: |
+          docker build -t $(acrName).azurecr.io/$(imageName):$(Build.BuildId) -f dockerfile .
+
+    - task: Bash@3
+      displayName: 'Push Docker Image to ACR'
+      inputs:
+        targetType: 'inline'
+        script: |
+          docker push $(acrName).azurecr.io/$(imageName):$(Build.BuildId)
+
+- stage: Deploy
+  displayName: 'Deploy to Azure Function App'
+  dependsOn: Build
+  jobs:
+  - job: DeployFunctionApp
+    displayName: 'Deploy Function App with Container'
+    steps:
+    - task: AzureCLI@2
+      displayName: 'Update Function App to use new Container Image'
+      inputs:
+        azureSubscription: $(azureSubscription)
+        scriptType: 'bash'
+        scriptLocation: 'inlineScript'
+        inlineScript: |
+          az functionapp config container set --name $(functionAppName) --resource-group <YOUR_RESOURCE_GROUP> \
+          --docker-custom-image-name $(acrName).azurecr.io/$(imageName):$(Build.BuildId) \
+          --docker-registry-server-url https://$(acrName).azurecr.io
