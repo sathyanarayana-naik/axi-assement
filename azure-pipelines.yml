@@ -8,7 +8,7 @@ variables:
   group: assessmentgp
   acrname: 'pracr'
   acrusername: '$(acrusername)'
-  acrpwd: '$(acrpwd)'
+  acrpassword: '$(acrpwd)'
   imageName: 'superservice'
   functionAppName: 'finopsautotag'
   azureSubscription: 'azuresrconn'
@@ -59,10 +59,17 @@ stages:
         scriptType: 'bash'
         scriptLocation: 'inlineScript'
         inlineScript: |
+          echo "Function App Name: $(functionAppName)"
+          echo "Resource Group: $(resourceGroup)"
+          echo "ACR Name: $(acrName)"
+          echo "Image Name: $(imageName)"
+          echo "Build ID: $(Build.BuildId)"
+          echo "ACR Username: $(acrusername)"
+          echo "ACR Password: $(acrpwd)"  
           az functionapp config container set \
           --name $(functionAppName) \
           --resource-group $(resourceGroup) \
-          --docker-custom-image-name $(acrName).azurecr.io/$(imageName):$(Build.BuildId) \
-          --docker-registry-server-url https://$(acrName).azurecr.io \
-          --docker-registry-server-user "$(acrusername)" \
-          --docker-registry-server-password "$(acrpwd)"
+          --image $(acrName).azurecr.io/$(imageName):$(Build.BuildId) \
+          --registry-server https://$(acrName).azurecr.io \
+          --registry-username "$(acrusername)" \
+          --registry-password "$(acrpwd)"
