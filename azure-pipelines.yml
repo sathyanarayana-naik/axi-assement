@@ -62,5 +62,5 @@ stages:
           --resource-group $(resourceGroup) \
           --image $(acrName).azurecr.io/$(imageName):$(Build.BuildId) \
           --registry-server https://$(acrName).azurecr.io \
-          --registry-server-user $(acrusername) \
-          --registry-server-password $(acrpwd)
+          --registry-server-user "$(acrusername)" \
+          --registry-server-password "$(acrpwd)"
