@@ -6,7 +6,8 @@ pool:
 
 variables:
   group: assessmentgp
-  acrusername: '$(pracr)'
+  acrname: 'pracr'
+  acrusername: '$(acrusername)'
   acrpwd: '$(acrpwd)'
   imageName: 'superservice'
   functionAppName: 'finopsautotag'
