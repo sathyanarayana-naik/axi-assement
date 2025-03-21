@@ -8,8 +8,8 @@ variables:
   group: assessmentgp
   acrusername: '$(pracr)'
   acrpwd: '$(acrpwd)'
-  imageName: 'superservice'                  # Name of the image to be pushed to ACR
-  functionAppName: 'finopsautotag' # Replace with your Azure Function App name
+  imageName: 'superservice'
+  functionAppName: 'finopsautotag'
   azureSubscription: 'azuresrconn'
   resourceGroup: 'testrg'
   
