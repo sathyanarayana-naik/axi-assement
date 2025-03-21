@@ -62,7 +62,7 @@ stages:
           az functionapp config container set \
           --name $(functionAppName) \
           --resource-group $(resourceGroup) \
-          --image $(acrName).azurecr.io/$(imageName):$(Build.BuildId) \
-          --registry-server https://$(acrName).azurecr.io \
-          --registry-server-user "$(acrusername)" \
-          --registry-server-password "$(acrpwd)"
+          --docker-custom-image-name $(acrName).azurecr.io/$(imageName):$(Build.BuildId) \
+          --docker-registry-server https://$(acrName).azurecr.io \
+          --docker-registry-server-user "$(acrusername)" \
+          --docker-registry-server-password "$(acrpwd)"
