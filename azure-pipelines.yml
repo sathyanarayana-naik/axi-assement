@@ -10,7 +10,7 @@ variables:
   acrusername: '$(acrusername)'
   acrpassword: '$(acrpwd)'
   imageName: 'superservice'
-  functionAppName: 'finopsautotag'
+  functionAppName: 'dotnetappassesment'
   azureSubscription: 'azuresrconn'
   resourceGroup: 'testrg'
   
