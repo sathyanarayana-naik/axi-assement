@@ -4,7 +4,7 @@ WORKDIR /src
 COPY super-service/src/ /src/
 COPY super-service/test/ /test/
 
-WORKDIR /src/src
+WORKDIR /src
 RUN dotnet restore
 RUN dotnet publish -c Release -o /app/publish
 
