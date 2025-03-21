@@ -1,8 +1,8 @@
 # Stage 1: Build
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
-COPY src/ /src/
-COPY ./test /test/
+COPY super-service/src/ /src/
+COPY super-service/test/ /test/
 
 WORKDIR /src/src
 RUN dotnet restore
