@@ -9,6 +9,7 @@ variables:
   imageName: 'superservice'                  # Name of the image to be pushed to ACR
   functionAppName: 'finopsautotag' # Replace with your Azure Function App name
   azureSubscription: 'azuresrconn'
+  resourceGroup: 'testrg'
 
 stages:
 - stage: Build
@@ -54,6 +55,11 @@ stages:
         scriptType: 'bash'
         scriptLocation: 'inlineScript'
         inlineScript: |
-          az functionapp config container set --name $(functionAppName) --resource-group testrg \
-          --docker-custom-image-name $(acrName).azurecr.io/$(imageName):$(Build.BuildId) \
-          --docker-registry-server-url https://$(acrName).azurecr.io
+          az functionapp config container set \
+            --name $(functionAppName) \
+            --resource-group $(resourceGroup) \
+            --image $(acrName).azurecr.io/$(imageName):$(Build.BuildId) \
+            --registry-server https://$(acrName).azurecr.io \
+            --username $(az acr credential show --name $(acrName) --query "pracr" --output tsv) \
+            --password $(az acr credential show --name $(acrName) --query "passwords[0].value" --output tsv)
+
