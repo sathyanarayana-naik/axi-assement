@@ -5,11 +5,13 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
+  group: assessmentgp
   acrName: 'pracr'                # Replace with your Azure Container Registry name
   imageName: 'superservice'                  # Name of the image to be pushed to ACR
   functionAppName: 'finopsautotag' # Replace with your Azure Function App name
   azureSubscription: 'azuresrconn'
   resourceGroup: 'testrg'
+  
 
 stages:
 - stage: Build
@@ -56,10 +58,9 @@ stages:
         scriptLocation: 'inlineScript'
         inlineScript: |
           az functionapp config container set \
-            --name $(functionAppName) \
-            --resource-group $(resourceGroup) \
-            --image $(acrName).azurecr.io/$(imageName):$(Build.BuildId) \
-            --registry-server https://$(acrName).azurecr.io \
-            --username $(az acr credential show --name $(acrName) --query "pracr" --output tsv) \
-            --password $(az acr credential show --name $(acrName) --query "passwords[0].value" --output tsv)
-
+          --name $(functionAppName) \
+          --resource-group $(resourceGroup) \
+          --image $(acrName).azurecr.io/$(imageName):$(Build.BuildId) \
+          --registry-server https://$(acrName).azurecr.io \
+          --registry-server-user $(acrusername) \
+          --registry-server-password $(acrpwd)
