@@ -6,7 +6,8 @@ pool:
 
 variables:
   group: assessmentgp
-  acrName: 'pracr'                # Replace with your Azure Container Registry name
+  acrusername: '$(pracr)'
+  acrpwd: '$(acrpwd)'
   imageName: 'superservice'                  # Name of the image to be pushed to ACR
   functionAppName: 'finopsautotag' # Replace with your Azure Function App name
   azureSubscription: 'azuresrconn'
