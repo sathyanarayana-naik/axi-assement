@@ -83,4 +83,4 @@ stages:
           az acr login --name $(acrName)
     - script: |
         echo "Running Docker container..."
-        docker run -d --name superservice $(imageName):$(Build.BuildId)
+        docker run -d --name $(acrName) $(imageName):$(Build.BuildId)
