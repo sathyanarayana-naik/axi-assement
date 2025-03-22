@@ -59,13 +59,6 @@ stages:
         scriptType: 'bash'
         scriptLocation: 'inlineScript'
         inlineScript: |
-          echo "Function App Name: $(functionAppName)"
-          echo "Resource Group: $(resourceGroup)"
-          echo "ACR Name: $(acrName)"
-          echo "Image Name: $(imageName)"
-          echo "Build ID: $(Build.BuildId)"
-          echo "ACR Username: $(acrusername)"
-          echo "ACR Password: $(acrpwd)"  
           az webapp config container set \
           --name $(webAppName) \
           --resource-group $(resourceGroup) \
@@ -80,4 +73,4 @@ stages:
     - script: |
         echo "Running Docker container..."
         docker run -d -p 8080:5000 --name superservice $(imageName):$(Build.BuildId)
-        displayName: 'Run Docker Container
+        displayName: 'Run Docker Container'
