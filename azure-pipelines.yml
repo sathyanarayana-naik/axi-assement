@@ -10,7 +10,7 @@ variables:
   acrusername: '$(acrusername)'
   acrpassword: '$(acrpwd)'
   imageName: 'superservice'
-  functionAppName: 'dotnetappassesment'
+  webAppName: 'dotnetappassesment'
   azureSubscription: 'azuresrconn'
   resourceGroup: 'testrg'
   
