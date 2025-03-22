@@ -70,10 +70,11 @@ stages:
   jobs:
   - job: RunDockerJob
     steps:
+    - task: Docker@2
+      inputs:
+        containerRegistry: 'container registry'
+        command: 'login'
     - script: |
         echo "Running Docker container..."
         docker run -d -p 8080:5000 --name superservice $(imageName):$(Build.BuildId)
-        --docker-registry-server-url https://$(acrName).azurecr.io \
-        --docker-registry-server-user "$(acrusername)" \
-        --docker-registry-server-password "$(acrpwd)"
-        displayName: 'Run Docker Container'
+      displayName: 'Run Docker Container'
