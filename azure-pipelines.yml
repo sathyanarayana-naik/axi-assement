@@ -68,9 +68,9 @@ stages:
           --docker-registry-server-password "$(acrpwd)"
 
 - stage: Run
-  displayName: 'Bdocker runner'
+  displayName: 'Docker runner'
   jobs:
-  - job: dickerRunner
+  - job: dockerRunner
     displayName: 'docker runner'
     steps:
     - task: AzureCLI@2
@@ -80,5 +80,7 @@ stages:
         scriptType: 'bash'
         scriptLocation: 'inlineScript'
         inlineScript: |
-          az acr login --name $(acrName) \
-          docker run -d -p 8080:5000 --name superservice $(imageName):$(Build.BuildId)
+          az acr login --name $(acrName)
+    - script: |
+        echo "Running Docker container..."
+        docker run -d --name superservice $(imageName):$(Build.BuildId)
