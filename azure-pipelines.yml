@@ -66,15 +66,20 @@ stages:
           --docker-registry-server-url https://$(acrName).azurecr.io \
           --docker-registry-server-user "$(acrusername)" \
           --docker-registry-server-password "$(acrpwd)"
-- stage: RunDocker
+
+- stage: Run
+  displayName: 'Bdocker runner'
   jobs:
-  - job: RunDockerJob
+  - job: dickerRunner
+    displayName: 'docker runner'
     steps:
-    - task: Docker@2
+    - task: AzureCLI@2
+      displayName: 'Login to ACR'
       inputs:
-        containerRegistry: 'container registry'
-        command: 'login'
-    - script: |
-        echo "Running Docker container..."
-        docker run -d -p 8080:5000 --name superservice $(imageName):$(Build.BuildId)
-      displayName: 'Run Docker Container'
+        azureSubscription: $(azureSubscription)
+        scriptType: 'bash'
+        scriptLocation: 'inlineScript'
+        inlineScript: |
+          az acr login --name $(acrName) \
+          echo "Running Docker container..." \
+          docker run -d -p 8080:5000 --name superservice $(imageName):$(Build.BuildId)
